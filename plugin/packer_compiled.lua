@@ -130,7 +130,6 @@ _G.packer_plugins = {
     url = "https://github.com/williamboman/mason.nvim"
   },
   nightfox = {
-    config = { "\27LJ\2\0028\0\0\2\0\3\0\0056\0\0\0009\0\1\0'\1\2\0B\0\2\1K\0\1\0\25colorscheme nightfox\bcmd\bvim\0" },
     loaded = true,
     path = "/home/wes/.local/share/nvim/site/pack/packer/start/nightfox",
     url = "https://github.com/EdenEast/nightfox.nvim"
@@ -178,10 +177,6 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: nightfox
-time([[Config for nightfox]], true)
-try_loadstring("\27LJ\2\0028\0\0\2\0\3\0\0056\0\0\0009\0\1\0'\1\2\0B\0\2\1K\0\1\0\25colorscheme nightfox\bcmd\bvim\0", "config", "nightfox")
-time([[Config for nightfox]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
