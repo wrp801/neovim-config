@@ -31,9 +31,9 @@ return require('packer').startup(function(use)
 --	config = function() vim.cmd('colorscheme nightfox') end
 }
 	use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-	use 'ThePrimeagen/harpoon'
+	use 'ThePrimeagen/harpoon' -- for hopping between files
 	use 'mbbill/undotree'
-	use 'tpope/vim-fugitive'
+	use 'tpope/vim-fugitive' -- for git stuff
 	use {
 		'VonHeikemen/lsp-zero.nvim',
 		requires = {
@@ -55,6 +55,14 @@ return require('packer').startup(function(use)
 			{'rafamadriz/friendly-snippets'},
 		}
 }
+    -- for aesthetics
     use 'vim-airline/vim-airline'
     use 'vim-airline/vim-airline-themes'
+    -- for comments 
+    use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+}
 end)
