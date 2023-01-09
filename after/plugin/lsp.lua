@@ -1,11 +1,19 @@
 local lsp = require('lsp-zero')
-lsp.preset('recommended')
+
+-- local lsp_install = require('nvim-lsp-installer')
+-- local lsp_config =  require('lspconfig')
+-- local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- local lspconfig = require('lspconfig')
+-- local mason_config = require('mason-lspconfig')
+ lsp.preset('recommended')
 
 lsp.ensure_installed({
-	'rust_analyzer',
-	'julials',
-	'pyright'
-	})
+    'rust_analyzer',
+    -- 'julials',
+    'pyright'
+})
+
+
 
 	local cmp = require('cmp')
 	local cmp_select = {behavior = cmp.SelectBehavior.Select}
@@ -34,3 +42,4 @@ lsp.ensure_installed({
 			vim.keymap.set('n', '<C-h>', function() vim.lsp.buf.signature_help() end, opts) 
 		end)
 lsp.setup()
+
