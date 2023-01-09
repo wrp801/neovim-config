@@ -72,100 +72,100 @@ use {
 }
 -- file tree 
 -- use {
---     'nvim-tree/nvim-tree.lua',
---     requires = {
---         'nvim-tree/nvim-web-devicons', -- optional, for file icons
---     },
---     tag = 'nightly' -- optional, updated every week. (see issue #1193)
--- }
+    -- 'nvim-tree/nvim-tree.lua',
+    -- requires = {
+        -- 'nvim-tree/nvim-web-devicons', -- optional, for file icons
+        -- },
+        -- tag = 'nightly' -- optional, updated every week. (see issue #1193)
+        -- }
 
--- This is the julia language server setup copied from the github here https://github.com/julia-vscode/LanguageServer.jl/wiki/Vim-and-Neovim
-use({ 
-  "hrsh7th/nvim-cmp",
-  requires = { { "hrsh7th/cmp-nvim-lsp" } },
-  config = function()
-    cmp.setup({
+        -- This is the julia language server setup copied from the github here https://github.com/julia-vscode/LanguageServer.jl/wiki/Vim-and-Neovim
+        -- use({ 
+        --     "hrsh7th/nvim-cmp",
+        --     requires = { { "hrsh7th/cmp-nvim-lsp" } },
+        --     config = function()
+        --         cmp.setup({
+        --
+        --             completion = {
+        --                 completeopt = "menu,menuone,noselect",
+        --             },
+        --
+        --             -- You must set mapping.
+        --             mapping = {
+        --                 ["<C-p>"] = cmp.mapping.select_prev_item(),
+        --                 ["<C-n>"] = cmp.mapping.select_next_item(),
+        --                 ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+        --                 ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        --                 ["<C-Space>"] = cmp.mapping.complete(),
+        --                 ["<C-e>"] = cmp.mapping.close(),
+        --             },
+        --
+        --             -- You should specify your *installed* sources.
+        --             sources = {
+        --                 { name = "nvim_lsp" },
+        --             },
+        --         })
+        --
+        --     end,
+        -- })
 
-      completion = {
-        completeopt = "menu,menuone,noselect",
-      },
+        use({
+            "neovim/nvim-lspconfig",
+            config = function()
+                local function create_capabilities()
+                    local capabilities = vim.lsp.protocol.make_client_capabilities()
+                    capabilities.textDocument.completion.completionItem.snippetSupport = true
+                    capabilities.textDocument.completion.completionItem.preselectSupport = true
+                    capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
+                    capabilities.textDocument.completion.completionItem.deprecatedSupport = true
+                    capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
+                    capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
+                    capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
+                    capabilities.textDocument.completion.completionItem.resolveSupport = {
+                        properties = { "documentation", "detail", "additionalTextEdits" },
+                    }
+                    capabilities.textDocument.completion.completionItem.documentationFormat = { "markdown" }
+                    capabilities.textDocument.codeAction = {
+                        dynamicRegistration = true,
+                        codeActionLiteralSupport = {
+                            codeActionKind = {
+                                valueSet = (function()
+                                    local res = vim.tbl_values(vim.lsp.protocol.CodeActionKind)
+                                    table.sort(res)
+                                    return res
+                                end)(),
+                            },
+                        },
+                    }
+                    return capabilities
+                end
 
-      -- You must set mapping.
-      mapping = {
-        ["<C-p>"] = cmp.mapping.select_prev_item(),
-        ["<C-n>"] = cmp.mapping.select_next_item(),
-        -- ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-        -- ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete(),
-        ["<C-e>"] = cmp.mapping.close(),
-      },
+                --     -- disable virtual text (recommended for julia)
+                vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+                    virtual_text = false,
+                    underline = false,
+                    signs = true,
+                    update_in_insert = false,
+                })
 
-      -- You should specify your *installed* sources.
-      sources = {
-        { name = "nvim_lsp" },
-      },
-    })
+                local on_attach = function(client, bufnr)
+                    -- vim.api.buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+                end
+                --
+                local lspconfig = require("lspconfig")
 
-  end,
-})
+                local function lsp_setup(name, config)
+                    lspconfig[name].setup(config)
+                end
 
-use({
-  "neovim/nvim-lspconfig",
-  config = function()
-    local function create_capabilities()
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities.textDocument.completion.completionItem.snippetSupport = true
-      capabilities.textDocument.completion.completionItem.preselectSupport = true
-      capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
-      capabilities.textDocument.completion.completionItem.deprecatedSupport = true
-      capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
-      capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
-      capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
-      capabilities.textDocument.completion.completionItem.resolveSupport = {
-        properties = { "documentation", "detail", "additionalTextEdits" },
-      }
-      capabilities.textDocument.completion.completionItem.documentationFormat = { "markdown" }
-      capabilities.textDocument.codeAction = {
-        dynamicRegistration = true,
-        codeActionLiteralSupport = {
-          codeActionKind = {
-            valueSet = (function()
-              local res = vim.tbl_values(vim.lsp.protocol.CodeActionKind)
-              table.sort(res)
-              return res
-            end)(),
-          },
-        },
-      }
-      return capabilities
-    end
-    
-    -- disable virtual text (recommended for julia)
-    vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-      virtual_text = false,
-      underline = false,
-      signs = true,
-      update_in_insert = false,
-    })
-    
-    local on_attach = function(client, bufnr)
-      vim.api.buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-    end
-    
-    local lspconfig = require("lspconfig")
-    
-    local function lsp_setup(name, config)
-      lspconfig[name].setup(config)
-    end
-    
-    lsp_setup("julials", {
-      on_attach = on_attach,
-      capabilities = create_capabilities(),
-    })
+                lsp_setup("julials", {
+                    on_attach = on_attach,
+                    capabilities = create_capabilities(),
+                })
 
-  end,
-})
+            end,
+        })
 
 
 
-end)
+    end)
