@@ -27,7 +27,10 @@ return require('packer').startup(function(use)
         -- or                            , branch = '0.1.x',
         requires = { {'nvim-lua/plenary.nvim'} }
     }
-    use { "EdenEast/nightfox.nvim", as = 'nightfox', 
+    -- color schemes
+    use { "EdenEast/nightfox.nvim", as = 'nightfox',
+    use {"ellisonleao/gruvbox.nvim"},
+    use {"olimorris/onedark.nvim"}
     --	config = function() vim.cmd('colorscheme nightfox') end
 }
 use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
@@ -58,7 +61,7 @@ use {
 
 -- new language support
 -- use 'neovim/nvim-lsp'
--- use 'JuliaEditorSupport/julia-vim'
+use 'JuliaEditorSupport/julia-vim' -- julia language
 
 -- for aesthetics
 use 'vim-airline/vim-airline'
@@ -70,6 +73,7 @@ use {
         require('Comment').setup()
     end
 }
+
 -- file tree 
 -- use {
     -- 'nvim-tree/nvim-tree.lua',

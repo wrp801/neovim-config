@@ -115,10 +115,20 @@ _G.packer_plugins = {
     path = "/home/wes/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
+  ["gruvbox.nvim"] = {
+    loaded = true,
+    path = "/home/wes/.local/share/nvim/site/pack/packer/start/gruvbox.nvim",
+    url = "https://github.com/ellisonleao/gruvbox.nvim"
+  },
   harpoon = {
     loaded = true,
     path = "/home/wes/.local/share/nvim/site/pack/packer/start/harpoon",
     url = "https://github.com/ThePrimeagen/harpoon"
+  },
+  ["julia-vim"] = {
+    loaded = true,
+    path = "/home/wes/.local/share/nvim/site/pack/packer/start/julia-vim",
+    url = "https://github.com/JuliaEditorSupport/julia-vim"
   },
   ["lsp-zero.nvim"] = {
     loaded = true,
@@ -155,6 +165,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/wes/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
+  },
+  ["onedark.nvim"] = {
+    loaded = true,
+    path = "/home/wes/.local/share/nvim/site/pack/packer/start/onedark.nvim",
+    url = "https://github.com/olimorris/onedark.nvim"
   },
   ["packer.nvim"] = {
     loaded = true,
