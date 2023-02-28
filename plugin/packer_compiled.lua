@@ -145,6 +145,11 @@ _G.packer_plugins = {
     path = "/home/wes/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  ["monokai-pro.nvim"] = {
+    loaded = true,
+    path = "/home/wes/.local/share/nvim/site/pack/packer/start/monokai-pro.nvim",
+    url = "https://gitlab.com/__tpb/monokai-pro.nvim"
+  },
   nightfox = {
     loaded = true,
     path = "/home/wes/.local/share/nvim/site/pack/packer/start/nightfox",
@@ -169,7 +174,7 @@ _G.packer_plugins = {
   ["onedark.nvim"] = {
     loaded = true,
     path = "/home/wes/.local/share/nvim/site/pack/packer/start/onedark.nvim",
-    url = "https://github.com/olimorris/onedark.nvim"
+    url = "https://github.com/navarasu/onedark.nvim"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -180,6 +185,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/wes/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
+  },
+  sonokai = {
+    loaded = true,
+    path = "/home/wes/.local/share/nvim/site/pack/packer/start/sonokai",
+    url = "https://github.com/sainnhe/sonokai"
   },
   ["telescope.nvim"] = {
     loaded = true,

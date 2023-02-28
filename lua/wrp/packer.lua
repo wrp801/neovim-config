@@ -30,7 +30,10 @@ return require('packer').startup(function(use)
     -- color schemes
     use { "EdenEast/nightfox.nvim", as = 'nightfox',
     use {"ellisonleao/gruvbox.nvim"},
-    use {"olimorris/onedark.nvim"}
+    use { "navarasu/onedark.nvim"},
+    use {  'https://gitlab.com/__tpb/monokai-pro.nvim',
+            as = 'monokai-pro.nvim'},
+    use {'sainnhe/sonokai'}
     --	config = function() vim.cmd('colorscheme nightfox') end
 }
 use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
