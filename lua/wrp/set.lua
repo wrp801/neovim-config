@@ -28,6 +28,10 @@ vim.opt.updatetime = 50
 -- vim.opt.colorcolumn = "80"
 vim.g.mapleader = " " 
 
+vim.opt.wildmode=longest,list
+
+-- system clipboard 
+vim.api.nvim_set_option('clipboard', 'unnamed')
 
 
 
