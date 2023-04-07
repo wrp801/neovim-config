@@ -30,11 +30,17 @@ return require('packer').startup(function(use)
     -- color schemes
     use { "EdenEast/nightfox.nvim", as = 'nightfox',
     use {"ellisonleao/gruvbox.nvim"},
-    use {"olimorris/onedark.nvim"}
+    use {"olimorris/onedark.nvim"},
+    use {'sainnhe/sonokai'},
+    use({ 'rose-pine/neovim', as = 'rose-pine' }),
+    use {'sainnhe/everforest', as = 'everforest'}
     --	config = function() vim.cmd('colorscheme nightfox') end
 }
-use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-use 'ThePrimeagen/harpoon' -- for hopping between files
+use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+}
+-- use 'ThePrimeagen/harpoon' -- for hopping between files
 use 'mbbill/undotree'
 use 'tpope/vim-fugitive' -- for git stuff
 use {
@@ -72,6 +78,16 @@ use {
     config = function()
         require('Comment').setup()
     end
+}
+-- for annotation generation
+use {
+    "danymat/neogen",
+    config = function()
+        require('neogen').setup {}
+    end,
+    requires = "nvim-treesitter/nvim-treesitter",
+    -- Uncomment next line if you want to follow only stable versions
+    -- tag = "*"
 }
 
 -- file tree 

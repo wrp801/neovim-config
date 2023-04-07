@@ -16,3 +16,6 @@ vim.keymap.set("n", "<leader>bn", vim.cmd.bnext)
 vim.keymap.set("n","<leader>bb", vim.cmd.bprev)
 vim.keymap.set("n","<C-w>", vim.cmd.bd)
 vim.keymap.set("n","<leader>bl", vim.cmd.ls)
+
+-- remap for neogen
+vim.keymap.set("n", "<leader>ng", vim.cmd.Neogen)
