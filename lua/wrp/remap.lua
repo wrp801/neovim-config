@@ -16,3 +16,18 @@ vim.keymap.set("n", "<leader>bn", vim.cmd.bnext)
 vim.keymap.set("n","<leader>bb", vim.cmd.bprev)
 vim.keymap.set("n","<C-w>", vim.cmd.bd)
 vim.keymap.set("n","<leader>bl", vim.cmd.ls)
+
+-- remap for neogen
+vim.keymap.set("n", "<leader>ng", vim.cmd.Neogen)
+
+-- for clipboard 
+-- copy from clipboard
+-- vim.keymap.set('v', '<leader>y', '+y')
+-- vim.keymap.set('n', '<leader>Y', '+yg_')
+-- vim.keymap.set('n', '<leader>y', '+y')
+-- vim.keymap.set('n', '<leader>yy', '+yy')
+-- -- paste to clipboard
+-- vim.keymap.set('n','<leader>p', '+p')
+-- vim.keymap.set('n','<leader>P', '+P')
+-- vim.keymap.set('v', '<leader>p', '+p')
+-- vim.keymap.set('v', '<leader>P', '+P')
