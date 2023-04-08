@@ -145,11 +145,18 @@ _G.packer_plugins = {
     path = "/Users/wespoulsen/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+<<<<<<< HEAD
   neogen = {
     config = { "\27LJ\2\n8\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\vneogen\frequire\0" },
     loaded = true,
     path = "/Users/wespoulsen/.local/share/nvim/site/pack/packer/start/neogen",
     url = "https://github.com/danymat/neogen"
+=======
+  ["monokai-pro.nvim"] = {
+    loaded = true,
+    path = "/home/wes/.local/share/nvim/site/pack/packer/start/monokai-pro.nvim",
+    url = "https://gitlab.com/__tpb/monokai-pro.nvim"
+>>>>>>> main
   },
   nightfox = {
     loaded = true,
@@ -174,8 +181,13 @@ _G.packer_plugins = {
   },
   ["onedark.nvim"] = {
     loaded = true,
+<<<<<<< HEAD
     path = "/Users/wespoulsen/.local/share/nvim/site/pack/packer/start/onedark.nvim",
     url = "https://github.com/olimorris/onedark.nvim"
+=======
+    path = "/home/wes/.local/share/nvim/site/pack/packer/start/onedark.nvim",
+    url = "https://github.com/navarasu/onedark.nvim"
+>>>>>>> main
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -187,6 +199,7 @@ _G.packer_plugins = {
     path = "/Users/wespoulsen/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+<<<<<<< HEAD
   ["rose-pine"] = {
     loaded = true,
     path = "/Users/wespoulsen/.local/share/nvim/site/pack/packer/start/rose-pine",
@@ -195,6 +208,11 @@ _G.packer_plugins = {
   sonokai = {
     loaded = true,
     path = "/Users/wespoulsen/.local/share/nvim/site/pack/packer/start/sonokai",
+=======
+  sonokai = {
+    loaded = true,
+    path = "/home/wes/.local/share/nvim/site/pack/packer/start/sonokai",
+>>>>>>> main
     url = "https://github.com/sainnhe/sonokai"
   },
   ["telescope.nvim"] = {
