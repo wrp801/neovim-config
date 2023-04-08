@@ -5,7 +5,6 @@
 -- vim.o.background = 'dark'
 -- vim.cmd("colorscheme gruvbox")
 
-<<<<<<< HEAD
 -- for sonokai
 -- vim.g.sonokai_style = 'atlantis'
 -- vim.g.sonokai_better_performance = 1
@@ -18,7 +17,6 @@
 vim.cmd("colorscheme everforest")
 vim.g.everforest_background = 'hard'
 
-=======
 -- for onedark: styles are dark, darker, cool, deep, warm, warmer
 -- require('onedark').setup{
 --     style = 'warm'
@@ -38,9 +36,3 @@ vim.g.everforest_background = 'hard'
 -- -- Load the colorscheme
 -- vim.cmd[[colorscheme monokaipro]]
 
--- for sonokai 
-
-vim.g.sonokai_style = 'atlantis'
-vim.g.sonokai_better_performance = 1
-vim.cmd("colorscheme sonokai")
->>>>>>> main

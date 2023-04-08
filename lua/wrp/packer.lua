@@ -28,21 +28,14 @@ return require('packer').startup(function(use)
         requires = { {'nvim-lua/plenary.nvim'} }
     }
     -- color schemes
-    use { "EdenEast/nightfox.nvim", as = 'nightfox',
-    use {"ellisonleao/gruvbox.nvim"},
-<<<<<<< HEAD
-    use {"olimorris/onedark.nvim"},
-    use {'sainnhe/sonokai'},
-    use({ 'rose-pine/neovim', as = 'rose-pine' }),
-    use {'sainnhe/everforest', as = 'everforest'}
-=======
-    use { "navarasu/onedark.nvim"},
-    use {  'https://gitlab.com/__tpb/monokai-pro.nvim',
-            as = 'monokai-pro.nvim'},
+    use { "EdenEast/nightfox.nvim", as = 'nightfox'}
+    use {"ellisonleao/gruvbox.nvim"}
     use {'sainnhe/sonokai'}
->>>>>>> main
+    use{ 'rose-pine/neovim', as = 'rose-pine' }
+    use {'sainnhe/everforest', as = 'everforest'}
+    use {'sainnhe/sonokai'}
     --	config = function() vim.cmd('colorscheme nightfox') end
-}
+
 use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
