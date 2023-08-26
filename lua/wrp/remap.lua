@@ -20,6 +20,13 @@ vim.keymap.set("n","<leader>bl", vim.cmd.ls)
 -- remap for neogen
 vim.keymap.set("n", "<leader>ng", vim.cmd.Neogen)
 
+-- remap for trouble
+vim.keymap.set("n", "<leader>to", vim.cmd.Trouble)
+vim.keymap.set("n", "<leader>tc", vim.cmd.TroubleClose)
+
+-- remap for zenmode 
+vim.keymap.set("n", "<leader>zm", vim.cmd.ZenMode)
+
 -- for clipboard 
 -- copy from clipboard
 -- vim.keymap.set('v', '<leader>y', '+y')

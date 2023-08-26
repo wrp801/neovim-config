@@ -100,6 +100,7 @@ use {
     }
   end
 }
+use("folke/zen-mode.nvim")
 
 -- file tree 
 -- use {
