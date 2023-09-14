@@ -14,6 +14,8 @@
 -- vim.cmd("colorscheme rose-pine")
 
 -- for everforest
-vim.cmd("colorscheme everforest")
-vim.g.everforest_background = 'hard'
+-- vim.cmd("colorscheme everforest")
+-- vim.g.everforest_background = 'hard'
 
+--for tokyonight
+vim.cmd("colorscheme tokyonight-storm")

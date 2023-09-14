@@ -33,7 +33,8 @@ return require('packer').startup(function(use)
     use {"olimorris/onedark.nvim"},
     use {'sainnhe/sonokai'},
     use({ 'rose-pine/neovim', as = 'rose-pine' }),
-    use {'sainnhe/everforest', as = 'everforest'}
+    use {'sainnhe/everforest', as = 'everforest'},
+    use {'folke/tokyonight.nvim'}
     --	config = function() vim.cmd('colorscheme nightfox') end
 }
 use {
