@@ -34,7 +34,8 @@ return require('packer').startup(function(use)
     use {'sainnhe/sonokai'},
     use({ 'rose-pine/neovim', as = 'rose-pine' }),
     use {'sainnhe/everforest', as = 'everforest'},
-    use {'folke/tokyonight.nvim'}
+    use {'folke/tokyonight.nvim'}, 
+    use {'rebelot/kanagawa.nvim'},
     --	config = function() vim.cmd('colorscheme nightfox') end
 }
 use {
@@ -102,6 +103,9 @@ use {
   end
 }
 use("folke/zen-mode.nvim")
+use('nvim-tree/nvim-web-devicons')
+use 'lewis6991/gitsigns.nvim' -- OPTIONAL: for git status
+use 'romgrk/barbar.nvim'
 
 -- file tree 
 -- use {
@@ -174,13 +178,13 @@ use("folke/zen-mode.nvim")
                 end
 
                 --     -- disable virtual text (recommended for julia)
-                vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-                    virtual_text = false,
-                    underline = false,
-                    signs = true,
-                    update_in_insert = false,
-                })
-
+                -- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+                --     virtual_text = false,
+                --     underline = false,
+                --     signs = true,
+                --     update_in_insert = false,
+                -- })
+                --
                 local on_attach = function(client, bufnr)
                     -- vim.api.buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
                 end

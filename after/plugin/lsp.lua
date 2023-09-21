@@ -1,10 +1,5 @@
 local lsp = require('lsp-zero')
 
--- local lsp_install = require('nvim-lsp-installer')
--- local lsp_config =  require('lspconfig')
--- local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
--- local lspconfig = require('lspconfig')
--- local mason_config = require('mason-lspconfig')
 lsp.preset('recommended')
 
 lsp.ensure_installed({
@@ -55,7 +50,6 @@ lsp.setup_nvim_cmp({
     end)
 
     lsp.setup()
-
     local function setup_lsp_diags()
         vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
         vim.lsp.diagnostic.on_publish_diagnostics,
@@ -72,6 +66,4 @@ lsp.setup_nvim_cmp({
 
     -- vim.diagnostic.config({
     --     virtual_text = true,
-    --
     -- })
-    --

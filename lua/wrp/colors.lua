@@ -19,3 +19,6 @@
 
 --for tokyonight
 vim.cmd("colorscheme tokyonight-storm")
+
+--for kanagawa
+-- vim.cmd("colorscheme kanagawa")
