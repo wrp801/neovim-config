@@ -36,15 +36,11 @@ return require('packer').startup(function(use)
     use {'sainnhe/everforest', as = 'everforest'},
     use {'folke/tokyonight.nvim'}, 
     use {'rebelot/kanagawa.nvim'},
-    --	config = function() vim.cmd('colorscheme nightfox') end
 }
 use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
 }
--- use 'ThePrimeagen/harpoon' -- for hopping between files
-use 'mbbill/undotree'
-use 'tpope/vim-fugitive' -- for git stuff
 use {
     'VonHeikemen/lsp-zero.nvim',
     requires = {
@@ -68,12 +64,13 @@ use {
 }
 
 -- new language support
--- use 'neovim/nvim-lsp'
 use 'JuliaEditorSupport/julia-vim' -- julia language
 
 -- for aesthetics
-use 'vim-airline/vim-airline'
-use 'vim-airline/vim-airline-themes'
+use 'nvim-lualine/lualine.nvim'
+
+-- for tmux suport
+use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
 -- for comments 
 use {
     'numToStr/Comment.nvim',
@@ -101,20 +98,18 @@ use {
       -- refer to the configuration section below
     }
   end
-}
-use("folke/zen-mode.nvim")
-use('nvim-tree/nvim-web-devicons')
+}  
+-- file explorer
+use("nvim-tree/nvim-tree.lua")
+use("folke/zen-mode.nvim") -- zen mode
+use('nvim-tree/nvim-web-devicons') -- icons
 use 'lewis6991/gitsigns.nvim' -- OPTIONAL: for git status
 use 'romgrk/barbar.nvim'
 
--- file tree 
--- use {
-    -- 'nvim-tree/nvim-tree.lua',
-    -- requires = {
-        -- 'nvim-tree/nvim-web-devicons', -- optional, for file icons
-        -- },
-        -- tag = 'nightly' -- optional, updated every week. (see issue #1193)
-        -- }
+use("szw/vim-maximizer") -- maximizes and restores current window
+
+use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
+
 
         -- This is the julia language server setup copied from the github here https://github.com/julia-vscode/LanguageServer.jl/wiki/Vim-and-Neovim
         -- use({ 
@@ -202,7 +197,5 @@ use 'romgrk/barbar.nvim'
 
             end,
         })
-
-
 
     end)

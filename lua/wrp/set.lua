@@ -17,10 +17,8 @@ vim.opt.undofile = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
-vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
-vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
@@ -30,8 +28,20 @@ vim.g.mapleader = " "
 
 vim.opt.wildmode=longest,list
 
--- system clipboard 
-vim.api.nvim_set_option('clipboard', 'unnamed')
+-- backspace 
+vim.opt.backspace = "indent,eol,start"
 
+-- system clipboard 
+-- vim.api.nvim_set_option('clipboard', 'unnamed')
+vim.opt.clipboard:append("unnamedplus")
+
+-- aesthetics
+vim.opt.background = "dark"
+vim.opt.termguicolors = true
+vim.opt.signcolumn = "yes"
+
+-- splits
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 
 
