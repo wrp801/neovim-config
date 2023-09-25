@@ -8,6 +8,10 @@ vim.keymap.set("n", "<leader>vs", "<C-w>v") -- vertical split
 vim.keymap.set("n", "<leader>hs", "<C-w>s") -- horizontal split
 vim.keymap.set('n', "<leader>sx", ":close<CR>") -- close a split
 vim.keymap.set("n", "<leader>se", "<C-w>=") -- make split windows equal width
+vim.keymap.set("n","<leader>wl", "<C-w>l") -- navigate to left split
+vim.keymap.set("n","<leader>wh", "<C-w>h") -- navigate to right split
+vim.keymap.set("n","<leader>wj", "<C-w>j") -- navigate to bottom split
+vim.keymap.set("n","<leader>wk", "<C-w>k") -- navigate to top split
 
 -- remaps for tabs
 vim.keymap.set("n", "<leader>to", ":tabnew<CR>")
