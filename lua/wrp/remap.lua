@@ -32,9 +32,6 @@ vim.keymap.set("n", "<leader>bw", vim.cmd.BufferOrderByWindow)
 -- remap for neogen
 vim.keymap.set("n", "<leader>ng", vim.cmd.Neogen)
 
--- remap for trouble
--- vim.keymap.set("n", "<leader>to", vim.cmd.Trouble)
--- vim.keymap.set("n", "<leader>tc", vim.cmd.TroubleClose)
 
 -- remap to go to definition in new tab
 vim.api.nvim_buf_set_keymap(0, "n", "gD", "<CMD>tab LspDefinition<CR>", {noremap = true, silent = true})
@@ -43,8 +40,12 @@ vim.api.nvim_buf_set_keymap(0, "n", "gD", "<CMD>tab LspDefinition<CR>", {noremap
 vim.keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle split window maximization
 
 -- nvim-tree
+local api = require('nvim-tree.api')
 vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>") -- toggle file explorer
 vim.keymap.set("n", "<leader>nff", ":NvimTreeFindFile<CR>") -- find file in file tree
+-- vim.keymap.set("n", "<leader>ncf", api.fs.create()) -- create a file in nvim tree
+-- vim.keymap.set("n", "<leader>ncd", api.fs.create("/")) -- create a directory in nvim tree
+
 
 -- trouble remaps
 vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>",
@@ -86,3 +87,11 @@ vim.keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>") -- list all 
 vim.keymap.set("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>") -- list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]
 vim.keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
 vim.keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
+
+
+-- custom keymaps 
+vim.api.nvim_set_keymap('n', '<leader>gds', '<cmd>vsplit | execute "normal! " . v:count1 . "gd"<CR>', { noremap = true, silent = true }) -- go to definition in a new split
+
+-- black formatting 
+vim.api.nvim_set_keymap('n','<buffer><leader>blk', ":call Black()<cr>", {silent = true})
+

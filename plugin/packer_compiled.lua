@@ -115,10 +115,11 @@ _G.packer_plugins = {
     path = "/Users/wespoulsen/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
-  everforest = {
+  ["everforest-nvim"] = {
+    config = { "\27LJ\2\nO\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\15background\thard\nsetup\15everforest\frequire\0" },
     loaded = true,
-    path = "/Users/wespoulsen/.local/share/nvim/site/pack/packer/start/everforest",
-    url = "https://github.com/sainnhe/everforest"
+    path = "/Users/wespoulsen/.local/share/nvim/site/pack/packer/start/everforest-nvim",
+    url = "https://github.com/neanias/everforest-nvim"
   },
   ["friendly-snippets"] = {
     loaded = true,
@@ -232,10 +233,24 @@ _G.packer_plugins = {
     path = "/Users/wespoulsen/.local/share/nvim/site/pack/packer/start/sonokai",
     url = "https://github.com/sainnhe/sonokai"
   },
+  ["tabout.nvim"] = {
+    config = { "\27LJ\2\n•\3\0\0\5\0\f\0\0236\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0004\3\a\0005\4\4\0>\4\1\0035\4\5\0>\4\2\0035\4\6\0>\4\3\0035\4\a\0>\4\4\0035\4\b\0>\4\5\0035\4\t\0>\4\6\3=\3\n\0024\3\0\0=\3\v\2B\0\2\1K\0\1\0\fexclude\ftabouts\1\0\2\topen\6{\nclose\6}\1\0\2\topen\6[\nclose\6]\1\0\2\topen\6(\nclose\6)\1\0\2\topen\6`\nclose\6`\1\0\2\topen\6\"\nclose\6\"\1\0\2\topen\6'\nclose\6'\1\0\t\21ignore_beginning\2\21enable_backwards\2\15act_as_tab\2\16default_tab\n<C-t>\22default_shift_tab\n<C-d>\vtabkey\n<Tab>\21backwards_tabkey\f<S-Tab>\21act_as_shift_tab\1\15completion\2\nsetup\vtabout\frequire\0" },
+    load_after = {},
+    loaded = true,
+    needs_bufread = false,
+    path = "/Users/wespoulsen/.local/share/nvim/site/pack/packer/opt/tabout.nvim",
+    url = "https://github.com/abecodes/tabout.nvim",
+    wants = { "nvim-treesitter" }
+  },
   ["telescope.nvim"] = {
     loaded = true,
     path = "/Users/wespoulsen/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["todo-comments.nvim"] = {
+    loaded = true,
+    path = "/Users/wespoulsen/.local/share/nvim/site/pack/packer/start/todo-comments.nvim",
+    url = "https://github.com/folke/todo-comments.nvim"
   },
   ["tokyonight.nvim"] = {
     loaded = true,
@@ -266,22 +281,35 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: nvim-lspconfig
-time([[Config for nvim-lspconfig]], true)
-try_loadstring("\27LJ\2\nm\0\0\4\0\a\0\f6\0\0\0009\0\1\0006\2\0\0009\2\2\0029\2\3\0029\2\4\2B\0\2\0026\1\5\0009\1\6\1\18\3\0\0B\1\2\1L\0\2\0\tsort\ntable\19CodeActionKind\rprotocol\blsp\15tbl_values\bvim­\5\1\0\a\0\30\0B6\0\0\0009\0\1\0009\0\2\0009\0\3\0B\0\1\0029\1\4\0009\1\5\0019\1\6\1+\2\2\0=\2\a\0019\1\4\0009\1\5\0019\1\6\1+\2\2\0=\2\b\0019\1\4\0009\1\5\0019\1\6\0015\2\v\0005\3\n\0=\3\f\2=\2\t\0019\1\4\0009\1\5\0019\1\6\1+\2\2\0=\2\r\0019\1\4\0009\1\5\0019\1\6\1+\2\2\0=\2\14\0019\1\4\0009\1\5\0019\1\6\1+\2\2\0=\2\15\0019\1\4\0009\1\5\0019\1\6\1+\2\2\0=\2\16\0019\1\4\0009\1\5\0019\1\6\0015\2\19\0005\3\18\0=\3\20\2=\2\17\0019\1\4\0009\1\5\0019\1\6\0015\2\22\0=\2\21\0019\1\4\0005\2\24\0005\3\27\0005\4\26\0003\5\25\0B\5\1\2=\5\f\4=\4\28\3=\3\29\2=\2\23\0012\0\0€L\0\2\0\29codeActionLiteralSupport\19codeActionKind\1\0\0\1\0\0\0\1\0\1\24dynamicRegistration\2\15codeAction\1\2\0\0\rmarkdown\24documentationFormat\15properties\1\0\0\1\4\0\0\18documentation\vdetail\24additionalTextEdits\19resolveSupport\28commitCharactersSupport\24labelDetailsSupport\25insertReplaceSupport\22deprecatedSupport\rvalueSet\1\0\0\1\2\0\0\3\1\15tagSupport\21preselectSupport\19snippetSupport\19completionItem\15completion\17textDocument\29make_client_capabilities\rprotocol\blsp\bvim\v\0\2\2\0\0\0\1K\0\1\0'\0\2\5\1\1\0\6-\2\0\0008\2\0\0029\2\0\2\18\4\1\0B\2\2\1K\0\1\0\2À\nsetup~\1\0\n\0\t\0\0163\0\0\0003\1\1\0006\2\2\0'\4\3\0B\2\2\0023\3\4\0\18\4\3\0'\6\5\0005\a\6\0=\1\a\a\18\b\0\0B\b\1\2=\b\b\aB\4\3\0012\0\0€K\0\1\0\17capabilities\14on_attach\1\0\0\fjulials\0\14lspconfig\frequire\0\0\0", "config", "nvim-lspconfig")
-time([[Config for nvim-lspconfig]], false)
 -- Config for: Comment.nvim
 time([[Config for Comment.nvim]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
 time([[Config for Comment.nvim]], false)
--- Config for: neogen
-time([[Config for neogen]], true)
-try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\vneogen\frequire\0", "config", "neogen")
-time([[Config for neogen]], false)
+-- Config for: nvim-lspconfig
+time([[Config for nvim-lspconfig]], true)
+try_loadstring("\27LJ\2\nm\0\0\4\0\a\0\f6\0\0\0009\0\1\0006\2\0\0009\2\2\0029\2\3\0029\2\4\2B\0\2\0026\1\5\0009\1\6\1\18\3\0\0B\1\2\1L\0\2\0\tsort\ntable\19CodeActionKind\rprotocol\blsp\15tbl_values\bvim­\5\1\0\a\0\30\0B6\0\0\0009\0\1\0009\0\2\0009\0\3\0B\0\1\0029\1\4\0009\1\5\0019\1\6\1+\2\2\0=\2\a\0019\1\4\0009\1\5\0019\1\6\1+\2\2\0=\2\b\0019\1\4\0009\1\5\0019\1\6\0015\2\v\0005\3\n\0=\3\f\2=\2\t\0019\1\4\0009\1\5\0019\1\6\1+\2\2\0=\2\r\0019\1\4\0009\1\5\0019\1\6\1+\2\2\0=\2\14\0019\1\4\0009\1\5\0019\1\6\1+\2\2\0=\2\15\0019\1\4\0009\1\5\0019\1\6\1+\2\2\0=\2\16\0019\1\4\0009\1\5\0019\1\6\0015\2\19\0005\3\18\0=\3\20\2=\2\17\0019\1\4\0009\1\5\0019\1\6\0015\2\22\0=\2\21\0019\1\4\0005\2\24\0005\3\27\0005\4\26\0003\5\25\0B\5\1\2=\5\f\4=\4\28\3=\3\29\2=\2\23\0012\0\0€L\0\2\0\29codeActionLiteralSupport\19codeActionKind\1\0\0\1\0\0\0\1\0\1\24dynamicRegistration\2\15codeAction\1\2\0\0\rmarkdown\24documentationFormat\15properties\1\0\0\1\4\0\0\18documentation\vdetail\24additionalTextEdits\19resolveSupport\28commitCharactersSupport\24labelDetailsSupport\25insertReplaceSupport\22deprecatedSupport\rvalueSet\1\0\0\1\2\0\0\3\1\15tagSupport\21preselectSupport\19snippetSupport\19completionItem\15completion\17textDocument\29make_client_capabilities\rprotocol\blsp\bvim\v\0\2\2\0\0\0\1K\0\1\0'\0\2\5\1\1\0\6-\2\0\0008\2\0\0029\2\0\2\18\4\1\0B\2\2\1K\0\1\0\2À\nsetup~\1\0\n\0\t\0\0163\0\0\0003\1\1\0006\2\2\0'\4\3\0B\2\2\0023\3\4\0\18\4\3\0'\6\5\0005\a\6\0=\1\a\a\18\b\0\0B\b\1\2=\b\b\aB\4\3\0012\0\0€K\0\1\0\17capabilities\14on_attach\1\0\0\fjulials\0\14lspconfig\frequire\0\0\0", "config", "nvim-lspconfig")
+time([[Config for nvim-lspconfig]], false)
 -- Config for: trouble.nvim
 time([[Config for trouble.nvim]], true)
 try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
 time([[Config for trouble.nvim]], false)
+-- Config for: neogen
+time([[Config for neogen]], true)
+try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\vneogen\frequire\0", "config", "neogen")
+time([[Config for neogen]], false)
+-- Config for: everforest-nvim
+time([[Config for everforest-nvim]], true)
+try_loadstring("\27LJ\2\nO\0\0\3\0\4\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0B\0\2\1K\0\1\0\1\0\1\15background\thard\nsetup\15everforest\frequire\0", "config", "everforest-nvim")
+time([[Config for everforest-nvim]], false)
+-- Load plugins in order defined by `after`
+time([[Sequenced loading]], true)
+vim.cmd [[ packadd nvim-cmp ]]
+vim.cmd [[ packadd tabout.nvim ]]
+
+-- Config for: tabout.nvim
+try_loadstring("\27LJ\2\n•\3\0\0\5\0\f\0\0236\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0004\3\a\0005\4\4\0>\4\1\0035\4\5\0>\4\2\0035\4\6\0>\4\3\0035\4\a\0>\4\4\0035\4\b\0>\4\5\0035\4\t\0>\4\6\3=\3\n\0024\3\0\0=\3\v\2B\0\2\1K\0\1\0\fexclude\ftabouts\1\0\2\topen\6{\nclose\6}\1\0\2\topen\6[\nclose\6]\1\0\2\topen\6(\nclose\6)\1\0\2\topen\6`\nclose\6`\1\0\2\topen\6\"\nclose\6\"\1\0\2\topen\6'\nclose\6'\1\0\t\21ignore_beginning\2\21enable_backwards\2\15act_as_tab\2\16default_tab\n<C-t>\22default_shift_tab\n<C-d>\vtabkey\n<Tab>\21backwards_tabkey\f<S-Tab>\21act_as_shift_tab\1\15completion\2\nsetup\vtabout\frequire\0", "config", "tabout.nvim")
+
+time([[Sequenced loading]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

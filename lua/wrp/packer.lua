@@ -33,7 +33,19 @@ return require('packer').startup(function(use)
     use {"olimorris/onedark.nvim"},
     use {'sainnhe/sonokai'},
     use({ 'rose-pine/neovim', as = 'rose-pine' }),
-    use {'sainnhe/everforest', as = 'everforest'},
+    -- use {'sainnhe/everforest', as = 'everforest'}, -- this was the original everforest used
+    use({
+        "neanias/everforest-nvim",
+        -- Optional; default configuration will be used if setup isn't called.
+        config = function()
+            require("everforest").setup({
+                background = 'hard',
+                }
+
+            )
+        end,
+    }),
+
     use {'folke/tokyonight.nvim'}, 
     use {'rebelot/kanagawa.nvim'},
 }
@@ -109,6 +121,38 @@ use 'romgrk/barbar.nvim'
 use("szw/vim-maximizer") -- maximizes and restores current window
 
 use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
+
+use {
+  'abecodes/tabout.nvim',
+  config = function()
+    require('tabout').setup {
+    tabkey = '<Tab>', -- key to trigger tabout, set to an empty string to disable
+    backwards_tabkey = '<S-Tab>', -- key to trigger backwards tabout, set to an empty string to disable
+    act_as_tab = true, -- shift content if tab out is not possible
+    act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
+    default_tab = '<C-t>', -- shift default action (only at the beginning of a line, otherwise <TAB> is used)
+    default_shift_tab = '<C-d>', -- reverse shift default action,
+    enable_backwards = true, -- well ...
+    completion = true, -- if the tabkey is used in a completion pum
+    tabouts = {
+      {open = "'", close = "'"},
+      {open = '"', close = '"'},
+      {open = '`', close = '`'},
+      {open = '(', close = ')'},
+      {open = '[', close = ']'},
+      {open = '{', close = '}'}
+    },
+    ignore_beginning = true, --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]]
+    exclude = {} -- tabout will ignore these filetypes
+}
+  end,
+	wants = {'nvim-treesitter'}, -- or require if not used so far
+	after = {'nvim-cmp'} -- if a completion plugin is using tabs load it before
+}
+
+use {"folke/todo-comments.nvim", dependencies = {"nvim-lua/plenary.nvim"}, opts = {},
+    require('todo-comments').setup()} -- todo comments 
+
 
 
         -- This is the julia language server setup copied from the github here https://github.com/julia-vscode/LanguageServer.jl/wiki/Vim-and-Neovim
