@@ -150,8 +150,7 @@ use {
 	after = {'nvim-cmp'} -- if a completion plugin is using tabs load it before
 }
 
-use {"folke/todo-comments.nvim", dependencies = {"nvim-lua/plenary.nvim"}, opts = {},
-    require('todo-comments').setup()} -- todo comments 
+use {"folke/todo-comments.nvim", dependencies = {"nvim-lua/plenary.nvim"}, opts = {}} -- todo comments 
 
 
 

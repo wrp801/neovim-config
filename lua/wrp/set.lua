@@ -1,5 +1,7 @@
 vim.opt.nu = true
 vim.opt.relativenumber = true
+-- make line numbers default
+vim.wo.number = true
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
@@ -44,4 +46,9 @@ vim.opt.signcolumn = "yes"
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
+-- keep signcolumn on by default
+vim.wo.signcolumn = 'yes'
+
+-- set completeopt to have a better completion experience
+vim.o.completeopt = true
 
