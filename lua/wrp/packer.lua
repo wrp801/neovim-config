@@ -28,21 +28,32 @@ return require('packer').startup(function(use)
         requires = { {'nvim-lua/plenary.nvim'} }
     }
     -- color schemes
-    use { "EdenEast/nightfox.nvim", as = 'nightfox'}
-    use {"ellisonleao/gruvbox.nvim"}
-    use {'sainnhe/sonokai'}
-    use{ 'rose-pine/neovim', as = 'rose-pine' }
-    use {'sainnhe/everforest', as = 'everforest'}
-    use {'sainnhe/sonokai'}
-    --	config = function() vim.cmd('colorscheme nightfox') end
+    use { "EdenEast/nightfox.nvim", as = 'nightfox',
+    use {"ellisonleao/gruvbox.nvim"},
+    use {"olimorris/onedark.nvim"},
+    use {'sainnhe/sonokai'},
+    use({ 'rose-pine/neovim', as = 'rose-pine' }),
+    -- use {'sainnhe/everforest', as = 'everforest'}, -- this was the original everforest used
+    use({
+        "neanias/everforest-nvim",
+        -- Optional; default configuration will be used if setup isn't called.
+        config = function()
+            require("everforest").setup({
+                background = 'hard',
+                }
+
+            )
+        end,
+    }),
+
+    use {'folke/tokyonight.nvim'}, 
+    use {'rebelot/kanagawa.nvim'},
+}
 
 use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
 }
--- use 'ThePrimeagen/harpoon' -- for hopping between files
-use 'mbbill/undotree'
-use 'tpope/vim-fugitive' -- for git stuff
 use {
     'VonHeikemen/lsp-zero.nvim',
     requires = {
@@ -66,12 +77,13 @@ use {
 }
 
 -- new language support
--- use 'neovim/nvim-lsp'
 use 'JuliaEditorSupport/julia-vim' -- julia language
 
 -- for aesthetics
-use 'vim-airline/vim-airline'
-use 'vim-airline/vim-airline-themes'
+use 'nvim-lualine/lualine.nvim'
+
+-- for tmux suport
+use("christoomey/vim-tmux-navigator") -- tmux & split window navigation
 -- for comments 
 use {
     'numToStr/Comment.nvim',
@@ -89,15 +101,59 @@ use {
     -- Uncomment next line if you want to follow only stable versions
     -- tag = "*"
 }
+use {
+  "folke/trouble.nvim",
+  requires = "nvim-tree/nvim-web-devicons",
+  config = function()
+    require("trouble").setup {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  end
+}  
+-- file explorer
+use("nvim-tree/nvim-tree.lua")
+use("folke/zen-mode.nvim") -- zen mode
+use('nvim-tree/nvim-web-devicons') -- icons
+use 'lewis6991/gitsigns.nvim' -- OPTIONAL: for git status
+use 'romgrk/barbar.nvim'
 
--- file tree 
--- use {
-    -- 'nvim-tree/nvim-tree.lua',
-    -- requires = {
-        -- 'nvim-tree/nvim-web-devicons', -- optional, for file icons
-        -- },
-        -- tag = 'nightly' -- optional, updated every week. (see issue #1193)
-        -- }
+use("szw/vim-maximizer") -- maximizes and restores current window
+
+use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
+
+use {
+  'abecodes/tabout.nvim',
+  config = function()
+    require('tabout').setup {
+    tabkey = '<Tab>', -- key to trigger tabout, set to an empty string to disable
+    backwards_tabkey = '<S-Tab>', -- key to trigger backwards tabout, set to an empty string to disable
+    act_as_tab = true, -- shift content if tab out is not possible
+    act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
+    default_tab = '<C-t>', -- shift default action (only at the beginning of a line, otherwise <TAB> is used)
+    default_shift_tab = '<C-d>', -- reverse shift default action,
+    enable_backwards = true, -- well ...
+    completion = true, -- if the tabkey is used in a completion pum
+    tabouts = {
+      {open = "'", close = "'"},
+      {open = '"', close = '"'},
+      {open = '`', close = '`'},
+      {open = '(', close = ')'},
+      {open = '[', close = ']'},
+      {open = '{', close = '}'}
+    },
+    ignore_beginning = true, --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]]
+    exclude = {} -- tabout will ignore these filetypes
+}
+  end,
+	wants = {'nvim-treesitter'}, -- or require if not used so far
+	after = {'nvim-cmp'} -- if a completion plugin is using tabs load it before
+}
+
+use {"folke/todo-comments.nvim", dependencies = {"nvim-lua/plenary.nvim"}, opts = {}} -- todo comments 
+
+
 
         -- This is the julia language server setup copied from the github here https://github.com/julia-vscode/LanguageServer.jl/wiki/Vim-and-Neovim
         -- use({ 
@@ -161,13 +217,13 @@ use {
                 end
 
                 --     -- disable virtual text (recommended for julia)
-                vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-                    virtual_text = false,
-                    underline = false,
-                    signs = true,
-                    update_in_insert = false,
-                })
-
+                -- vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+                --     virtual_text = false,
+                --     underline = false,
+                --     signs = true,
+                --     update_in_insert = false,
+                -- })
+                --
                 local on_attach = function(client, bufnr)
                     -- vim.api.buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
                 end
@@ -185,7 +241,5 @@ use {
 
             end,
         })
-
-
 
     end)

@@ -15,7 +15,12 @@
 
 -- for everforest
 vim.cmd("colorscheme everforest")
-vim.g.everforest_background = 'hard'
+
+--for tokyonight
+-- vim.cmd("colorscheme tokyonight-storm")
+
+--for kanagawa
+-- vim.cmd("colorscheme kanagawa")
 
 -- for onedark: styles are dark, darker, cool, deep, warm, warmer
 -- require('onedark').setup{
@@ -35,4 +40,3 @@ vim.g.everforest_background = 'hard'
 --
 -- -- Load the colorscheme
 -- vim.cmd[[colorscheme monokaipro]]
-
