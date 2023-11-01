@@ -32,10 +32,6 @@ vim.keymap.set("n", "<leader>bw", vim.cmd.BufferOrderByWindow)
 -- remap for neogen
 vim.keymap.set("n", "<leader>ng", vim.cmd.Neogen)
 
-
--- remap to go to definition in new tab
-vim.api.nvim_buf_set_keymap(0, "n", "gD", "<CMD>tab LspDefinition<CR>", {noremap = true, silent = true})
-
 -- vim-maximizer
 vim.keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle split window maximization
 
@@ -105,7 +101,10 @@ vim.keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list curre
 
 
 -- custom keymaps 
-vim.api.nvim_set_keymap('n', '<leader>gds', '<cmd>vsplit | execute "normal! " . v:count1 . "gd"<CR>', { noremap = true, silent = true }) -- go to definition in a new split
+-- vim.keymap.set('n', '<leader>gD', '<cmd>vsplit | execute "normal! " . v:count1 . "gd"<CR>', { noremap = true, silent = true }) -- go to definition in a new split
+-- map('n', '<LEADER>jd', '<cmd>lua require"telescope.builtin".lsp_definitions()<CR>', {noremap=true, silent=true})
+vim.keymap.set('n', '<leader>gD', '<cmd>lua require"telescope.builtin".lsp_definitions({jump_type="vsplit"})<CR>', {noremap=true, silent=true})
+vim.keymap.set('n', '<leader>qa', ':qall<CR>')
 
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
@@ -136,7 +135,7 @@ local on_attach = function(_, bufnr)
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+  nmap('<leader>K', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
   -- map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')

@@ -2,8 +2,7 @@ require('lualine').setup {
   options = {
     -- ... your lualine config
     -- theme = 'tokyonight'
-    -- theme = 'everforest'
-    theme = 'nordfox'
+    theme = 'everforest'
     -- ... your lualine config
   }
 }
