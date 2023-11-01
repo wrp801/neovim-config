@@ -49,6 +49,7 @@ return require('packer').startup(function(use)
     use {'folke/tokyonight.nvim'}, 
     use {'rebelot/kanagawa.nvim'},
 }
+
 use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'

@@ -21,3 +21,22 @@ vim.cmd("colorscheme everforest")
 
 --for kanagawa
 -- vim.cmd("colorscheme kanagawa")
+
+-- for onedark: styles are dark, darker, cool, deep, warm, warmer
+-- require('onedark').setup{
+--     style = 'warm'
+-- }
+-- require('onedark').load()
+
+
+-- for monokai pro
+-- vim.g.monokaipro_filter = "classic" -- options include spectrum, classic, default, machine, ristretto, octogon
+-- vim.g.monokaipro_italic_functions = true
+-- vim.g.monokaipro_sidebars = { "vista_kind", "packer" }
+-- vim.g.monokaipro_flat_term = true
+--
+-- -- Change the "hint" color to the "orange" color, and make the "error" color bright red
+-- vim.g.monokaipro_colors = { hint = "orange", error = "#ff0000" }
+--
+-- -- Load the colorscheme
+-- vim.cmd[[colorscheme monokaipro]]
