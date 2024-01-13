@@ -106,6 +106,11 @@ vim.keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list curre
 vim.keymap.set('n', '<leader>gD', '<cmd>lua require"telescope.builtin".lsp_definitions({jump_type="vsplit"})<CR>', {noremap=true, silent=true})
 vim.keymap.set('n', '<leader>qa', ':qall<CR>')
 
+--remap for DiffView
+vim.keymap.set('n', '<leader>dvo', ':DiffviewOpen<CR>')
+vim.keymap.set('n','<leader>dvc', ':DiffviewClose<CR>')
+
+
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)

@@ -1,5 +1,6 @@
 -- for night fox below
 -- vim.cmd("colorscheme carbonfox")
+-- vim.cmd('colorscheme dayfox')
 
 -- for gruvbox
 -- vim.o.background = 'dark'
@@ -14,6 +15,7 @@
 -- vim.cmd("colorscheme rose-pine")
 
 -- for everforest
+vim.o.background = 'dark'
 vim.cmd("colorscheme everforest")
 
 --for tokyonight
