@@ -121,6 +121,7 @@ use {
 }
 use("folke/zen-mode.nvim") -- zen mode
 use('nvim-tree/nvim-web-devicons') -- icons
+use 'DaikyXendo/nvim-material-icon' -- material theme icons
 use 'lewis6991/gitsigns.nvim' -- OPTIONAL: for git status
 use 'romgrk/barbar.nvim'
 
