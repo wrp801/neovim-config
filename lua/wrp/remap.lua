@@ -28,6 +28,7 @@ vim.keymap.set("n", "<leader>bb", vim.cmd.BufferOrderByBufferNumber)
 vim.keymap.set("n", "<leader>bd", vim.cmd.BufferOrderByDirectory)
 vim.keymap.set("n", "<leader>bl", vim.cmd.BufferOrderByLanguage)
 vim.keymap.set("n", "<leader>bw", vim.cmd.BufferOrderByWindow)
+vim.keymap.set("n", "<leader>bx", "<cmd>bufdo bd<CR>")
 
 -- remap for neogen
 vim.keymap.set("n", "<leader>ng", vim.cmd.Neogen)
