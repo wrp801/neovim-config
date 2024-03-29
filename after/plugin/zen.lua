@@ -22,7 +22,7 @@ vim.keymap.set("n", "<leader>zz", function()
     }
     require("zen-mode").toggle()
     vim.wo.wrap = false
-    vim.wo.number = false
-    vim.wo.rnu = false
+    vim.wo.number = true
+    vim.wo.rnu = true
     vim.opt.colorcolumn = "0"
 end)

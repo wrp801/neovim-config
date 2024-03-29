@@ -28,7 +28,8 @@ vim.keymap.set("n", "<leader>bb", vim.cmd.BufferOrderByBufferNumber)
 vim.keymap.set("n", "<leader>bd", vim.cmd.BufferOrderByDirectory)
 vim.keymap.set("n", "<leader>bl", vim.cmd.BufferOrderByLanguage)
 vim.keymap.set("n", "<leader>bw", vim.cmd.BufferOrderByWindow)
-vim.keymap.set("n", "<leader>bx", "<cmd>bufdo bd<CR>")
+vim.keymap.set("n", "<leader>bx", "<cmd>bufdo bd<CR>") --close all buffers but the current one
+
 
 -- remap for neogen
 vim.keymap.set("n", "<leader>ng", vim.cmd.Neogen)
@@ -111,14 +112,14 @@ vim.keymap.set('n', '<leader>qa', ':qall<CR>')
 vim.keymap.set('n', '<leader>dvo', ':DiffviewOpen<CR>')
 vim.keymap.set('n','<leader>dvc', ':DiffviewClose<CR>')
 
+-- remap for todo-comments
+vim.keymap.set('n', '<leader>tt', ':TodoTelescope<CR>')
+vim.keymap.set('n','<leader>tx', ':TodoTrouble<CR>')
+
 
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
-  -- NOTE: Remember that lua is a real programming language, and as such it is possible
-  -- to define small helper and utility functions so you don't have to repeat yourself
-  -- many times.
-  --
   -- In this case, we create a function that lets us more easily define mappings specific
   -- for LSP related items. It sets the mode, buffer and description for us each time.
   local nmap = function(keys, func, desc)
