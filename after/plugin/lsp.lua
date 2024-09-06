@@ -6,7 +6,8 @@ lsp.ensure_installed({
     'rust_analyzer',
     -- 'julials',
     'pyright',
-    'tsserver'
+    'tsserver',
+    'gopls',
 })
 
 
