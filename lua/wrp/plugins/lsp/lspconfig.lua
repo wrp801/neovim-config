@@ -63,7 +63,7 @@ return {
 
         -- Enabled biome formatting, turn off all the other ones generally
         biome = true,
-        tsserver = {
+        ts_ls = {
           server_capabilities = {
             documentFormattingProvider = false,
           },

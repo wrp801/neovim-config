@@ -1,2 +1,2 @@
 require("wrp.core")
--- require("wrp.lazy")
+require("wrp.lazy")
