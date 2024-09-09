@@ -1,71 +1,44 @@
-local lsp = require('lsp-zero')
+vim.api.nvim_create_autocmd("LspAttach", {
+        callback = function(args)
+          local bufnr = args.buf
+          local client = assert(vim.lsp.get_client_by_id(args.data.client_id), "must have valid client")
 
-lsp.preset('recommended')
+          local settings = servers[client.name]
+          if type(settings) ~= "table" then
+            settings = {}
+          end
 
-lsp.ensure_installed({
-    'rust_analyzer',
-    -- 'julials',
-    'pyright',
-    'tsserver',
-    'gopls',
-})
+          local builtin = require "telescope.builtin"
 
+          vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
+          vim.keymap.set("n", "gd", builtin.lsp_definitions, { buffer = 0 })
+          vim.keymap.set("n", "gr", builtin.lsp_references, { buffer = 0 })
+          vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = 0 })
+          vim.keymap.set('n', '<leader>gD', '<cmd>lua require"telescope.builtin".lsp_definitions({jump_type="vsplit"})<CR>', {noremap=true, silent=true})
+          vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, { buffer = 0 })
+          vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
 
+          vim.keymap.set("n", "<space>cr", vim.lsp.buf.rename, { buffer = 0 })
+          vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, { buffer = 0 })
+          vim.keymap.svim.keymap.set('n', '<leader>lds', function () 
+          builtin.lsp_document_symbols({symbols = {'class', 'function','method', 'struct', 'enum'} }) end)et("n", "<space>wd", builtin.lsp_document_symbols, { buffer = 0 })
 
-local cmp = require('cmp')
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
-local cmp_mappings = lsp.defaults.cmp_mappings({
-    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-    ['<C-y>'] = cmp.mapping.confirm({select = true}),
-    -- ['<Tab>'] = cmp.mapping.confirm({select = true}),
-    ['<C-Space>'] = cmp.mapping.complete(), 
-})
+          local filetype = vim.bo[bufnr].filetype
+          if disable_semantic_tokens[filetype] then
+            client.server_capabilities.semanticTokensProvider = nil
+          end
 
-lsp.setup_nvim_cmp({
-    mapping = cmp_mappings})
+          -- Override server capabilities
+          if settings.server_capabilities then
+            for k, v in pairs(settings.server_capabilities) do
+              if v == vim.NIL then
+                ---@diagnostic disable-next-line: cast-local-type
+                v = nil
+              end
 
+              client.server_capabilities[k] = v
+            end
+          end
+        end,
+      })
 
-    lsp.set_preferences({
-        suggest_lsp_servers = false,
-        sign_icons = {
-            error = 'E',
-            warn = 'W',
-            hint = 'H',
-            info = 'I'
-        }
-    })        
-
-    lsp.on_attach(function(client,bufnr)
-        local opts = {buffer = bufnr, remap = false}
-
-        vim.keymap.set('n', 'gd', function() vim.lsp.buf.definition() end, opts)
-        vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, opts)
-        vim.keymap.set('n','<leader>vws', function() vim.lsp.buf.workspace_symbol() end, opts)
-        vim.keymap.set('n', '<leader>vd', function() vim.diagnostic.open_float() end, opts)
-        vim.keymap.set('n', '[d', function() vim.diagnostic.goto_next() end, opts)
-        vim.keymap.set('n', ']d', function() vim.diagnostic.goto_prev() end, opts)
-        vim.keymap.set('n', '<leader>vca', function() vim.lsp.buf.code_action() end, opts)
-        vim.keymap.set('n', '<leader>vrr', function() vim.lsp.buf.references() end, opts)
-        vim.keymap.set('n', '<leader>vrn', function() vim.lsp.buf.rename() end, opts)
-        vim.keymap.set('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts) 
-    end)
-
-    lsp.setup()
-    local function setup_lsp_diags()
-        vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-        vim.lsp.diagnostic.on_publish_diagnostics,
-        {
-            virtual_text = true,
-            signs = true,
-            update_in_insert = false,
-            underline = true,
-        }
-        )
-    end
-
-    setup_lsp_diags()
-
-    -- vim.diagnostic.config({
-    --     virtual_text = true,
-    -- })
