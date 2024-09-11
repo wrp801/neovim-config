@@ -45,8 +45,16 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 vim.keymap.set("n", "<leader>bn", vim.cmd.BufferNext)
 vim.keymap.set("n","<leader>bp", vim.cmd.BufferPrevious)
 vim.keymap.set("n", '<leader>bc', vim.cmd.BufferClose)
-vim.keymap.set("n", "<leader>bx", "<cmd>bufdo bd<CR>") --close all buffers but the current one
-
+function CloseOtherBuffers()
+  local current = vim.api.nvim_get_current_buf()
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if buf ~= current and vim.api.nvim_buf_is_loaded(buf) then
+      vim.api.nvim_buf_delete(buf, {})
+    end
+  end
+end
+-- vim.keymap.set("n", "<leader>bx", "<cmd>bufdo bd<CR>") --close all buffers but the current one
+vim.keymap.set('n', '<leader>bx', ':lua CloseOtherBuffers()<CR>', { noremap = true, silent = true, desc = "Clsoe all buffers except the current one in focus" })
 
 -- vim-maximizer
 vim.keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle split window maximization
