@@ -92,6 +92,7 @@ lsp.setup_nvim_cmp({
         vim.keymap.set('n', '<leader>vrn', function() vim.lsp.buf.rename() end, opts)
         vim.keymap.set('i', '<C-h>', function() vim.lsp.buf.signature_help() end, opts) 
         vim.keymap.set('n', '<leader>nw', ToggleLspWarnings, { noremap = true, silent = true })
+        vim.keymap.set('n', '<leader>F', vim.lsp.buf.format)
     end)
 
     lsp.setup()

@@ -64,7 +64,7 @@
     keymap.set("n", "<leader>er", ":NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
 
     local api = require('nvim-tree.api')
-    vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Toggle file explorer"}) -- toggle file explorer
+    vim.keymap.set("n", "<leader>e", function() api.tree.toggle() end, { desc = "Toggle file explorer"}) -- toggle file explorer
     vim.keymap.set("n", "<leader>nff", ":NvimTreeFindFile<CR>", { desc = "Find file in the file tree"}) -- find file in file tree
     vim.keymap.set("n", "<leader>ncf", api.fs.create, {noremap = true, silent = true}, { desc = "Create a file in nvim tree"} ) -- create a file in nvim tree
     vim.keymap.set('n', '<leader>ncd', api.tree.change_root_to_node, {noremap = true, silent = true}, { desc = "Change root to node"})
