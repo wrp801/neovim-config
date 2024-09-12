@@ -53,11 +53,18 @@ function CloseOtherBuffers()
     end
   end
 end
--- vim.keymap.set("n", "<leader>bx", "<cmd>bufdo bd<CR>") --close all buffers but the current one
 vim.keymap.set('n', '<leader>bx', ':lua CloseOtherBuffers()<CR>', { noremap = true, silent = true, desc = "Clsoe all buffers except the current one in focus" })
 
 -- vim-maximizer
 vim.keymap.set("n", "<leader>sm", ":MaximizerToggle<CR>") -- toggle split window maximization
+
+
+-- reload vim config
+vim.keymap.set('n', '<leader>nv', ':so ~/.config/nvim/init.lua <CR>', { noremap = true, silent = true, desc = "Reload the entire nvim config"})
+
+-- source single file
+vim.keymap.set('n', "<leader>so", ':so % <CR>', { noremap = true, silent = true, desc = "Source the current file in the buffer"})
+
 
 
 
