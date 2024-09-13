@@ -56,7 +56,7 @@
       vim.keymap.set('n', '<leader>ps', function() 
 
             builtin.grep_string({ search = vim.fn.input("Grep > ")});
-        end)
+        end, { desc = "Grep string in project"})
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
