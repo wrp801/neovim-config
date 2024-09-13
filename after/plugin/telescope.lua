@@ -53,10 +53,20 @@
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+      
+      vim.keymap.set('n', '<leader>lds', function () 
+        builtin.lsp_document_symbols({symbols = {'class', 'function','method', 'struct', 'enum'} }) end, { desc = "List document symbols (excluding variables)"})
+      vim.keymap.set('n', '<leader>lws', builtin.lsp_workspace_symbols, { desc = "List workspace symbols"} )
+      vim.keymap.set('n', '<leader>lr', builtin.lsp_references, { desc = 'List references'})
       vim.keymap.set('n', '<leader>ps', function() 
 
             builtin.grep_string({ search = vim.fn.input("Grep > ")});
         end, { desc = "Grep string in project"})
+  -- telescope git commands 
+      vim.keymap.set('n', '<leader>gf', builtin.git_files, { desc = "Search for git files"})
+      vim.keymap.set('n', '<leader>gs', builtin.git_status, { desc = "Git status"})
+      vim.keymap.set('n', '<leader>gb', builtin.git_branches, { desc =  "Git branches"})
+
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
