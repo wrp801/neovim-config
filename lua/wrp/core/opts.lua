@@ -8,8 +8,10 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.smartindent = true
+vim.opt.mouse = 'a'
 
 vim.opt.wrap = false
+vim.opt.showmode = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -25,7 +27,6 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
--- vim.opt.colorcolumn = "80"
 vim.g.mapleader = " " 
 
 vim.opt.wildmode=longest,list
@@ -34,7 +35,6 @@ vim.opt.wildmode=longest,list
 vim.opt.backspace = "indent,eol,start"
 
 -- system clipboard 
--- vim.api.nvim_set_option('clipboard', 'unnamed')
 vim.opt.clipboard:append("unnamedplus")
 
 -- aesthetics
@@ -51,4 +51,24 @@ vim.wo.signcolumn = 'yes'
 
 -- set completeopt to have a better completion experience
 vim.o.completeopt = true
+
+
+-- Preview substitutions live, as you type!
+vim.opt.inccommand = 'split'
+
+-- Show which line your cursor is on
+vim.opt.cursorline = true
+
+-- Minimal number of screen lines to keep above and below the cursor.
+vim.opt.scrolloff = 10
+
+-- Case-insensitive searching UNLESS \C or one or more capital letters in the search term
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
+-- nerd font option 
+vim.g.have_nerd_font=true
+
+-- don't have `o` add a comment
+vim.opt.formatoptions:remove "o"
 

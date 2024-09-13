@@ -1,5 +1,3 @@
--- examples for your init.lua
-
 -- disable netrw at the very start of your init.lua (strongly advised)
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -7,31 +5,9 @@ vim.g.loaded_netrwPlugin = 1
 -- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
--- empty setup using defaults
--- require("nvim-tree").setup()
-
--- OR setup with some options
--- require("nvim-tree").setup({
---   sort_by = "case_sensitive",
---   view = {
---     adaptive_size = true,
---     mappings = {
---       list = {
---         { key = "u", action = "dir_up" },
---       },
---     },
---   },
---   renderer = {
---     group_empty = true,
---   },
---   filters = {
---     dotfiles = true,
---   },
--- })
-
 local setup, nvimtree = pcall(require, "nvim-tree")
-if not setup then 
-    return
+if not setup then
+  return
 end
 nvimtree.setup({
   -- disable window_picker for
@@ -45,12 +21,12 @@ nvimtree.setup({
     },
   },
   filters = {
-  dotfiles = false
+    dotfiles = false
   },
   git = {
-      enable = true, 
-      ignore = false,
-      timeout = 500
+    enable = true,
+    ignore = false,
+    timeout = 500
 
   }
   -- 	git = {
@@ -82,3 +58,14 @@ local function open_nvim_tree(data)
 end
 
 vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+
+local keymap = vim.keymap
+local api = require('nvim-tree.api')
+
+keymap.set("n", "<leader>nc", ":NvimTreeCollapse<CR>", { desc = "Collapse file explorer", noremap = true, silent = true }) -- collapse file explorer
+keymap.set("n", "<leader>nr", ":NvimTreeRefresh<CR>", { desc = "Refresh file explorer", noremap = true, silent = true })   -- refresh file explorer
+
+keymap.set("n", "<leader>nt", ':NvimTreeToggle<CR>', { desc = "Toggle file explorer", noremap = true, silent = true })     -- toggle file explorer
+keymap.set("n", "<leader>nff", ":NvimTreeFindFile<CR>", { desc = "Find file in the file tree" })                           -- find file in file tree
+keymap.set("n", "<leader>ncf", api.fs.create, { noremap = true, silent = true, desc = "Create a file in nvim tree" })                                                                                 -- create a file in nvim tree
+keymap.set('n', '<leader>ncd', api.tree.change_root_to_node, { noremap = true, silent = true, desc = "Change root to node" })
